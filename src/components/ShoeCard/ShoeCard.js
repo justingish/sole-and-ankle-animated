@@ -36,9 +36,9 @@ const ShoeCard = ({
       <Wrapper>
         <ImageWrapper>
           <Image alt="" src={imageSrc} />
-          {variant === 'on-sale' && <SaleFlag>Sale</SaleFlag>}
-          {variant === 'new-release' && <NewFlag>Just released!</NewFlag>}
         </ImageWrapper>
+        {variant === 'on-sale' && <SaleFlag>Sale</SaleFlag>}
+        {variant === 'new-release' && <NewFlag>Just released!</NewFlag>}
         <Spacer size={12} />
         <Row>
           <Name>{name}</Name>
@@ -69,7 +69,9 @@ const Link = styled.a`
   color: inherit;
 `;
 
-const Wrapper = styled.article``;
+const Wrapper = styled.article`
+  position: relative;
+`;
 
 const Flag = styled.div`
   position: absolute;
@@ -93,7 +95,6 @@ const NewFlag = styled(Flag)`
 `;
 
 const ImageWrapper = styled.div`
-  position: relative;
   overflow: hidden;
   border-radius: 16px 16px 4px 4px;
 
@@ -136,9 +137,11 @@ const ImageWrapper = styled.div`
 `;
 
 const Image = styled.img`
+  display: block;
   width: 100%;
   transition: transform 500ms;
   transform-origin: 50% 80%;
+  will-change: transform;
 
   @media (prefers-reduced-motion: no-preference) {
     &:hover {
